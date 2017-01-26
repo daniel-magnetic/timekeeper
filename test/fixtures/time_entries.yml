@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  timecard: one
+  time: 2017-01-26 15:41:52
+
+two:
+  timecard: two
+  time: 2017-01-26 15:41:52
