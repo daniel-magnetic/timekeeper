@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :time_entries
-  resources :timecards
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # TODO put the controllers into a version module namespace instead of this hack for the path
+  scope '/api/v1/' do
+    resources :time_entries
+    resources :timecards
+  end
 end
