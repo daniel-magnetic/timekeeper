@@ -3,9 +3,11 @@ class TimecardsController < ApplicationController
 
   # GET /timecards
   def index
-    @timecards = Timecard.all
+    # load the time entries too because we want to include them in the output
+    @timecards = Timecard.all.includes(:time_entries)
 
-    render json: @timecards
+    # tell the serializer to include time entries
+    render json: @timecards, include: 'time_entries'
   end
 
   # GET /timecards/1

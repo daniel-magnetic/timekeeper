@@ -1,7 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# some arbitrary data to make demoing this app easier
+timecard = Timecard.create(username: 'daniel', occurrence: Time.now)
+timecard.save
+timecard.time_entries.create(time: Time.now - 7.hours)
+timecard.time_entries.create(time: Time.now - 4.hours - 28.minutes)
+timecard.save
+
+timecard = Timecard.create(username: 'pamela', occurrence: Time.now)
+timecard.save
+timecard.time_entries.create(time: Time.now - 7.hours)
+timecard.save
+
+timecard = Timecard.create(username: 'rohan', occurrence: Time.now)
