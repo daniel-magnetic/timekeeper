@@ -57,11 +57,15 @@ class TimecardsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     response_json = response.parsed_body
-    expected_fields = %w(id totalhours username occurrence)
+    expected_fields = %w(id totalhours username occurrence time_entries)
     assert_equal expected_fields, expected_fields & response_json.keys, 'The response should contain the expected fields'
 
     assert_equal @timecard.username, response_json["username"], 'The name should be present'
     assert_equal @timecard.occurrence, response_json["occurrence"], 'The occurrence should be present'
+
+    assert_equal @timecard.time_entries.count, response_json["time_entries"].count, 'The time entries should be present'
+    expected_sub_fields = %w(id time timecard_id)
+    assert_equal expected_sub_fields , expected_sub_fields & response_json['time_entries'].first.keys, 'The time entries should contain the expected fields'
   end
 
   test "should update timecard" do

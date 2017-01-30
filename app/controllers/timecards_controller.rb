@@ -12,7 +12,7 @@ class TimecardsController < ApplicationController
 
   # GET /timecards/1
   def show
-    render json: @timecard
+    render json: @timecard, include: 'time_entries'
   end
 
   # POST /timecards
